@@ -1,0 +1,12 @@
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <p> <strong>Customer Name: </strong> <%= @order.customer.full_name%> </p>
+    <p> <strong>Product Name: </strong> <%= @order.product_name%> </p>
+    <p> <strong>Product Count: </strong> <%= @order.product_count%> </p>
+</div>
+<%= link_to 'Back to Customer', customer_path(@order.customer_id),  class: "btn btn-primary"%>
+
+<%= link_to customers_path, class: 'home-icon' do %>
+  <i class="home-icon fa-solid fa-lg fa-house"></i>
+<% end %>
+
+
