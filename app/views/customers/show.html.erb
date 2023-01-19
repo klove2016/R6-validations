@@ -1,46 +1,57 @@
 <p id="notice"><%= notice %></p>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <p>
+    <strong>First name:</strong>
+    <%= @customer.first_name %>
+  </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @customer.last_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @customer.phone %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @customer.phone %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @customer.email %>
+  </p>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
-<h1>Orders</h1>
-    <table>
-        <thead>
-            <tr>
-                <td>Customer</td>
-                <td>Product Name</td>
-                <td>Product Count</td>
-            </tr>
-        </thead>
-        <tbody>
-        <%@customer.orders.each do |order| %>
-            <tr> 
-                <td> <%= order.customer.full_name%> </td>
-                <td> <%= order.product_name%> </td>
-                <td> <%= order.product_count%> </td>
-                <td><%= link_to 'Show', order %></td>
-                <td><%= link_to 'Edit', edit_order_path(order) %></td>
-                <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-        <%end%>
-        </tbody>
-    </table>
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+
+  <h1>Orders</h1>
+      <table class="table">
+          <thead>
+              <tr>
+                  <td>Customer</td>
+                  <td>Product Name</td>
+                  <td>Product Count</td>
+              </tr>
+          </thead>
+          <tbody>
+            <% if @customer.orders.count == 0 %>
+              <tr>
+                <td><%= "No Orders Found for This Customer" %></td>
+              </tr>
+            <%else%>
+                <%@customer.orders.each do |order| %>
+                    <tr> 
+                        <td> <%= order.customer.full_name%> </td>
+                        <td> <%= order.product_name%> </td>
+                        <td> <%= order.product_count%> </td>
+                        <td><%= link_to 'Show', order,  class: "btn btn-primary" %></td>
+                        <td><%= link_to 'Edit', edit_order_path(order),  class: "btn btn-primary" %></td>
+                        <td><%= link_to 'Destroy', order,  class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <%end%>
+              <%end%>
+          </tbody>
+      </table>
+  <%= link_to 'Edit', edit_customer_path(@customer),  class: "btn btn-primary"  %> 
+  <%= link_to customers_path, class: 'home-icon' do %>
+  <i class="home-icon fa-solid fa-lg fa-house"></i>
+<% end %>
 

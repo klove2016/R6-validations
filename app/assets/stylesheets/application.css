@@ -9,7 +9,23 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+
+ *= require bootstrap
  *= require_tree .
  *= require_self
- */
+ */ 
+ @font-face {
+    font-family: 'Quicksand-SemiBold';
+    src:url('fonts/Quicksand-SemiBold.ttf');
+  }
+
+  h1 {
+    font-family: 'Quicksand-SemiBold';
+  }
+
+  .jumbotron {
+    color:rgb(213, 212, 223);
+    text-decoration: underline;
+    background-image: url('pexels-pixabay-163726.jpg');
+    background-size: cover;
+  }

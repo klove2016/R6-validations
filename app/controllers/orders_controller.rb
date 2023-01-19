@@ -33,9 +33,13 @@ class OrdersController < ApplicationController
           end
     end
     def destroy
-        @order.destroy
-        flash.notice = "The customer order record was successfully destroyed."
+        if @order.destroy
+            flash[:notice] = "Order was successfully deleted."
+        else
+            flash[:alert] = "An error occurred while trying to delete the order."
+        end
         redirect_to customer_path(@order.customer_id)
+       
     end
 
     private
